@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+  sql2csv:
+    container_name: sql2csv
+    image: python:3.10-alpine
+    environment:
+      - CONIF=conf.py
+    volumes:
+      - ./output:/output
+      - ./input:/input
