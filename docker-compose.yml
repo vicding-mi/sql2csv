@@ -3,9 +3,10 @@ version: "3.4"
 services:
   sql2csv:
     container_name: sql2csv
-    image: python:3.10-alpine
+    build: .
+    entrypoint: /input/entrypoint.sh
     environment:
-      - CONIF=conf.py
+      - CONF_FILE=conf.py
     volumes:
       - ./output:/output
       - ./input:/input
