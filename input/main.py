@@ -1,22 +1,10 @@
-import mariadb
-import sys
 import csv
+from conf import Conf
 
-# Connect to MariaDB
-try:
-    conn = mariadb.connect(
-        user="root",
-        password="example",
-        host="host.docker.internal",
-        port=3306,
-        database="verhalenbank_omeka"
-    )
-    print('db connected. ok!')
-except mariadb.Error as e:
-    print(f"Error connecting to MariaDB Platform: {e}")
-    sys.exit(1)
 
 # get cursor to db
+conf: Conf = Conf()
+conn = conf.get_connection()
 cur = conn.cursor()
 
 # get all column titles
